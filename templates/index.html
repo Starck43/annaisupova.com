@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+	<!-- include libraries(jQuery, bootstrap) -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+<!-- 	<script src="{% static 'js/custom.js' %}"></script>
+ -->
+
+	<title>{% block title %}Дизайн-студия a-studia{% endblock %}</title>
+</head>
+<body>
+	{% block svg-icons %}
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="display:none">
+			<symbol id="login-icon" height="8" viewBox="0 0 8 8" width="8" fill="white">
+				<path d="m3 0v1h4v5h-4v1h5v-7zm1 2v1h-4v1h4v1l2-1.5z"/>
+			</symbol>
+			<symbol id="arrow-thin-icon" height="8" viewBox="0 0 8 8" width="8">
+				<path d="M2.47 0l-2.47 3h2v5h1v-5h2l-2.53-3z" transform="translate(1)" />
+			</symbol>
+			<symbol id="arrow-thick-icon" height="8" viewBox="0 0 8 8" width="8">
+				<path d="M2.97 0l-2.97 3h2v5h2v-5h2l-3.03-3z" transform="translate(1)" />
+			</symbol>
+		</svg>
+	{% endblock %}
+	<div class="container">
+
+		{% block header %}
+		{% endblock%}
+
+		{% block content %}
+			<div class="first-container">
+				<div class="design-block">
+					<h2><span>дизайн</span></br>интерьера</h2>
+					<img src="media/design-image.jpg" alt="">
+				</div>
+			</div>
+			<div class="second-container">
+				<div class="styling-block">
+					<h2><span>стилизация</span></br>интерьерных съемок</h2>
+					<img src="media/styling-image.jpg" alt="">
+				</div>
+				<div class="contacts-block">
+					<div class="links">
+						<div class="mail-link"></div>
+						<div class="phone-link"></div>
+						<div class="instagram-link"></div>
+					</div>
+					<div class="get-in-touch">
+						{{name}}
+						<img src="media/logo-a-studia.png" alt="">
+						{{email}}
+						{{message}}
+					</div>
+				</div>
+			</div>
+
+		{% endblock %}
+
+	</div>
+
+</body>
+</html>

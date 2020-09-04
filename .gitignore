@@ -1,0 +1,9 @@
+# Text backup files
+*.bak
+
+#Database
+*.sqlite3
+
+a-studia.sublime-project
+media/*
+venv/*
