@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block header %}<h1>Как нас найти?</h1>{% endblock%}
+
+{% block content %}
+
+	<div class="contacts-container">
+		<div class="links">
+			<div class="instagram-link">
+				<a href="https://instagram.com/design_a_studia">
+					<svg class="icon instagram-icon"><use xlink:href="#logo-instagram"></use></svg>
+					<span>design_A_studia</span>
+				</a>
+			</div>
+			<div class="mail-link">
+				<a href="mailto:anya-is@yandex.ru"><svg class="icon"><use xlink:href="#logo-mail"></use></svg>
+					<span>anya-is@yandex.ru</span>
+				</a>
+			</div>
+			<div class="phone-link">
+				<a href="tel:+79127199030"><svg class="icon"><use xlink:href="#logo-iphone"></use></svg>
+					<span>+79127199030</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}
