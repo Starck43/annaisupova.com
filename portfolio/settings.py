@@ -26,13 +26,14 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm'
 # only for production
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm')
+# SECRET_KEY = '#7rmni#sjhr^t$u56*x4=wfr+nutf1($1xjv($2w=m#68%e$4w' # <--- annaisupova.com production key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # Alternative method to switch debug off for production
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['annaisupova.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sorl.thumbnail',
-    'crispy_forms',
+    #'crispy_forms',
     'design',
 ]
 
@@ -90,6 +91,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # Production
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'a0467449_a-studia',
+    #     'USER': 'a0467449_a-studia',
+    #     'PASSWORD': 'AnyaIsupova',
+    #     'HOST': 'localhost',
+    # }
 }
 
 
@@ -123,6 +132,22 @@ FILE_UPLOAD_HANDLERS = [
     "django.core.files.uploadhandler.MemoryFileUploadHandler",
     "django.core.files.uploadhandler.TemporaryFileUploadHandler"
  ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.yandex.ru'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = "artservice08@yandex.ru"
+# EMAIL_HOST_PASSWORD = "xdbhoybbgqugmbwk"
+# EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "annaisupova@list.ru"
+EMAIL_HOST_PASSWORD = "A-studia_support"
+EMAIL_USE_SSL = True
+
+EMAIL_RICIPIENTS = ['saloon.as@gmail.com']
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # sorl-thumbnail settings
 THUMBNAIL_ALIASES = {

@@ -1,45 +1,53 @@
 document.addEventListener("DOMContentLoaded", function() {
-	var date = new Date(), hours = date.getHours();
-	//console.log(hours);
-	if (hours > 18 || hours < 7) {
-		const html = document.querySelector('html');
-		html.style.filter = 'invert(80%)';
-	}
-	$('textarea').summernote({
-		//airMode: true,
-		lang: 'ru-RU',
-		tabsize: 2,
-		height: 150,
-	});
+	var logo = document.querySelector('#logo');
+	var contact_name = document.querySelector('#id_name');
+	var contact_email = document.querySelector('#id_email');
+	var contact_message = document.querySelector('#id_message');
+	var contact_btn = document.querySelector('#send-message-btn');
+	var secondContainer  = document.querySelector('.second-container');
+	var img = new Image();
 
-	function backToTop(){
-		var scrollStep = window.pageYOffset / 20;
-		if (window.pageYOffset > 0) {
-			window.scrollBy(0, -(scrollStep));
-			setTimeout(backToTop, 0);
-		}
+	img.src = logo.currentSrc;
+	img.onload = function() {
+		contactsElementsAdjust(logo.height);
 	}
 
-	const gotoUpLink = document.querySelector('.go-to-up');
-	gotoUpLink && gotoUpLink.addEventListener("click", function(e) {
-		e.preventDefault();
-		backToTop();
-		/*
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth'
-		});
-		*/
-	}, {passive: true});
-/*
-	const dropdownItems = document.querySelectorAll('.dropdown-item');
+	contactsElementsAdjust = function(obj_height){
+		contact_name.style.height = contact_email.style.height = (obj_height*0.93) + 'px';
+/*		var heightDiff = secondContainer.clientHeight-secondContainer.scrollHeight;
+		contact_message.style.height = contact_message.clientHeight + heightDiff + 'px';*/
+	}
+
+/*	const inputItems = document.querySelectorAll('.dropdown-item');
 	dropdownItems.forEach( (item) => {
 		item.addEventListener('click', (e) => {
-			for (let sibling of e.target.parentNode.children) {
-				sibling.classList.remove('active');
-			}
-			e.target.classList.add('active')
 		}, {passive: true});
-	});
-*/
+	});*/
+	const contact_form = document.querySelector('form');
+	contact_form.addEventListener("focus", (e) => {
+
+			contact_btn.classList.add('active');
+			contact_message.style.minHeight = '80px';
+
+	}, true);
+
+	contact_form.addEventListener("blur", (e) => {
+
+			contact_btn.classList.remove('active');
+			contact_message.style.minHeight = 'auto';
+
+	}, true);
+
+	window.addEventListener("resize", function(){
+		contactsElementsAdjust(logo.height);
+
+		if ( window.innerWidth < 992 && window.matchMedia("(orientation: portrait)").matches ) {
+			document.getElementsByTagName("html")[0].style.height = "100vh";
+
+			setTimeout(function(){
+				document.getElementsByTagName("html")[0].style.height = "100%";
+			}, 500);
+		}
+	}, false);
+
 });

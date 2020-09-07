@@ -1,14 +1,63 @@
 
+::-moz-focus-inner{
+	border: 0;
+	padding: 0;
+}
+
+input:not([type=checkbox]):not([type=radio]),
+textarea,
+select{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+::-webkit-input-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+:-ms-input-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+:-moz-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+::-moz-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+
+title{
+	visibility: hidden;
+}
+
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: "CenturyGothic", sans-serif;
 	font-size: 16px!important;
-	line-height: 1.5!important;
-	background-color: #eee;
-	overflow-y: scroll;
+	line-height: 1.25!important;
+	margin: 0;
+	background-color: #fff;
+	overflow-y: auto;
+	min-height: -webkit-fill-available;
 }
 h1{font-weight: bold;}
 a{display: block; cursor: pointer;}
-
+input,textarea {
+	box-sizing: border-box;
+	border: 1px solid grey;
+	padding: 3px;
+}
+textarea{
+	resize: none;
+}
+p{
+	line-height: 1.5;
+}
+button{
+	height: 40px;
+	border-radius: 0.4em
+}
 img{
 	width: 100%;
 	height: auto;
@@ -17,24 +66,281 @@ img{
 svg.icon{
 	width: 30px;
 	height: 30px;
+	fill: grey;
+	stroke: grey;
+	fill-rule:evenodd;
+	clip-rule:evenodd;
 }
-svg.icon.small{
-	width: 20px;
-	height: 20px;
+.fill-none{
+	fill: none;
+	stroke-width: 20px;
 }
-
-.container {
+svg.instagram-icon{
+	border: 1px solid grey;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+.message-sent{
+	margin: auto;
+}
+.message-sent button{
+	margin-top: 2em;
+	box-shadow: none;
+	border: 1px solid gray;
+	min-width: 120px;
+}
+.container{
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
 	justify-content: space-between;
+	height: 100%;
+	flex-direction: column;
+	overflow-y: auto;
 }
+.container >div{
+	max-width: 100%;
+}
+
+header{
+	position: absolute;
+	display: block;
+	font-size: 1.8vw;
+	line-height: 1.1;
+}
+header >*{
+	font-weight: normal;
+}
+header span{
+	text-transform: uppercase;
+}
+.design-block, .styling-block{
+	position: relative;
+	line-height: 1;
+}
+.design-block img{
+	object-fit: cover;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.first-container a, .second-container a{
+	height: 100%;
+	color: #000;
+}
+
 .first-container{
-	flex-basis: 70%
+	height: 100vh;
+	min-height: 100vh;
 }
-.second-container{
-	flex-basis: 28%
+.first-container header{
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	top: 13%;
 }
+
+.first-container .design-block{
+	height: calc(100% - 4em);
+	top: 2em;
+	padding: 0 2em;
+	overflow: hidden;
+}
+
+.second-container {
+	padding: 0 2em 2em;
+}
+.second-container header{
+	top: 69%;
+	left: 13%;
+}
+
+.second-container .contacts-block{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.links{
+	display: flex;
+	margin: 11% 0;
+	line-height: 1;
+}
+.links a{
+	display: flex;
+}
+.links > div{
+	margin-right: 2%;
+}
+.get-in-touch form{
+	position: relative;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.get-in-touch form >*{
+	margin: 0;
+}
+.get-in-touch #id_email, .get-in-touch #id_message{
+	position: relative;
+	width: 100%;
+}
+.get-in-touch #logo{
+	min-width: 60%;
+	max-width: 233px;
+	flex: 0 1 60%;
+	margin-left: 3%;
+	margin-top: -1%;
+}
+.get-in-touch #id_name, #logo{
+	max-width: 37%;
+	flex: 1 1 auto;
+}
+.get-in-touch #id_email{
+	width: 100%;
+	margin: 3% 0;
+}
+.get-in-touch form input{
+	height: auto;
+	min-height: 24px;
+}
+.get-in-touch form input,
+.get-in-touch form textarea{
+	border-radius: 0.4em;
+	font-size: 1em;
+	font-weight: normal;
+	font-family: "CenturyGothic", sans-serif;
+}
+
+.get-in-touch #id_message{
+	height: 60px !important;
+	transition: 150ms all ease-out;
+	z-index: 1;
+}
+
+
+.get-in-touch #send-message-btn{
+	position: absolute;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	height: 2em;
+	padding-right: 10px;
+	padding-left: 10px;
+	text-align: center;
+	line-height: 1;
+	transition: 300ms all ease;
+	z-index: 0;
+}
+.get-in-touch #send-message-btn.active{
+	transform: translateY(110%);
+}
+
+
+
+@media (min-width: 768px){
+
+	.get-in-touch form input,
+	.get-in-touch form textarea{
+		border-radius: 0.4vw;
+	}
+	.get-in-touch #send-message-btn{
+		height: 3%;
+	}
+}
+
+@media (min-width: 992px) {
+
+	body{
+		overflow: hidden;
+	}
+
+	.container {
+		overflow: hidden;
+		flex-direction: unset;
+	}
+
+	.first-container{
+		position: relative;
+		flex: 1 1 80%;
+		max-width: 80%;
+	}
+
+	.first-container .design-block{
+		top: 0;
+		height: 100%;
+		padding: 0;
+	}
+
+	.first-container header{
+		top: 13%;
+	}
+
+	.first-container header, .second-container header{
+		font-size: calc(3vw * 0.2);
+	}
+
+	.second-container{
+		position: relative;
+		display: flex;
+		flex: 1 1 20%;
+		max-width: 20%;
+		margin: 3%;
+		padding: 0;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
+	.second-container{
+		display: flex;
+		justify-content: space-between;
+	}
+	.second-container .styling-block{
+		flex: 1 0 50%;
+	}
+	.second-container .contacts-block{
+		margin-left: 2em;
+	}
+}
+
+@media (max-width: 992px) and (orientation: landscape) {
+	header{
+		font-size: 1.8vh;
+	}
+	.first-container header{
+		top: 16%;
+	}
+	.second-container{
+		padding-bottom: 0;
+		height: 100vh;
+		display: flex;
+		justify-content: space-between;
+	}
+	.second-container .styling-block{
+		flex: 1 0 50%;
+		max-width: 50%;
+		margin-bottom: 2em;
+		overflow: hidden;
+	}
+	.second-container .contacts-block{
+		flex: 1 1 auto;
+		margin-left: 2em;
+		margin-bottom: 2em;
+	}
+	.styling-block img{
+		width: auto;
+		height: 100%;
+	}
+}
+
 

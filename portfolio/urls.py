@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include # include added for apps
+from django.conf.urls import url
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,9 +23,11 @@ from design import views
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+	path('', views.index, name='index'),
 	path('/', include('design.urls')),
-
+	url(r'^contacts/$', views.contacts, name='contacts-url'),
+	url(r'^thanks/$', views.contact_thanks, name='thanks'),
+	url(r'apologise/$', views.under_reconstruction, name='apologise-url'),
 ]
 
 if settings.DEBUG:
