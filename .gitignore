@@ -1,14 +1,21 @@
-__pycache__/
 *.bak
-*.pyc
-#Database
 .DS_Store
-*.sqlite3
-a-studia.sublime-project
-src/
+
+# Django #
 media/
+__pycache__/
+*.log
+*.pot
+*.pyc
+
+# Database #
+*.sqlite3
+
+# Sublime #
+*.sublime-workspace
+*.sublime-project
+sftp-config.json
+
+src/
 .venv
 venv/
-portfolio/settings.py
-manage.py
-apps/migrations/
