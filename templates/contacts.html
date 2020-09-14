@@ -1,32 +1,19 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'css/contacts.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+{% endblock %}
 
 {% block scripts %}
 {% endblock %}
 
-{% block header %}<h1>Как нас найти?</h1>{% endblock%}
+{% block header %}<h1 class="page-title">Как нас найти?</h1>{% endblock%}
 
 {% block content %}
 
-	<div class="contacts-container">
-		<div class="links">
-			<div class="instagram-link">
-				<a href="https://instagram.com/design_a_studia">
-					<svg class="icon instagram-icon"><use xlink:href="#logo-instagram"></use></svg>
-					<span>design_A_studia</span>
-				</a>
-			</div>
-			<div class="mail-link">
-				<a href="mailto:anya-is@yandex.ru"><svg class="icon"><use xlink:href="#logo-mail"></use></svg>
-					<span>anya-is@yandex.ru</span>
-				</a>
-			</div>
-			<div class="phone-link">
-				<a href="tel:+79127199030"><svg class="icon"><use xlink:href="#logo-iphone"></use></svg>
-					<span>+79127199030</span>
-				</a>
-			</div>
-		</div>
-	</div>
+	<iframe class="yandex-map" src="https://yandex.ru/map-widget/v1/?um=constructor%3A73bd64344e689e791d25646273194614f82d770be9796c8ff1fe4e1098263923&amp;source=constructor" frameborder="0"></iframe>
 
+	{% include 'contacts-block.html' %}
 
 {% endblock %}

@@ -1,9 +1,14 @@
-# Text backup files
+__pycache__/
 *.bak
-
+*.pyc
 #Database
+.DS_Store
 *.sqlite3
-
 a-studia.sublime-project
-media/*
-venv/*
+src/
+media/
+.venv
+venv/
+portfolio/settings.py
+manage.py
+apps/migrations/

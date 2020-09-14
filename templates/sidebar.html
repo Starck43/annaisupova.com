@@ -1,0 +1,25 @@
+		{% load static %}
+		<script src="{% static 'js/sidebar.js' %}"></script>
+
+			<div class="nav-block">
+				<div class="home-item"><a id="home-link" href="/">В начало</a></div>
+
+				<ul id="nav-menu">
+					<li><a href="{% url 'projects-url' 'private-projects' %}">Частные объекты</a></li>
+					<li><a href="{% url 'projects-url' 'public-projects' %}">Общественные объекты</a></li>
+					<li><a href="{% url 'about-us-url' 'design' %}">О себе</a></li>
+					<li><a href="{% url 'contacts-url' 'design' %}">Контакты</a></li>
+				</ul>
+
+				<div id="navbar">
+					<a class="search-link" href="#"><svg class="search-icon icon"><use xlink:href="#search-icon"></use></svg></a>
+
+					{% if user.is_authenticated %}
+					<a class="login-link" href="/admin"><svg class="login-icon icon"><use xlink:href="#login-icon"></use></svg></a>
+					{% endif %}
+				</div>
+				<a id="burger-menu" href="#">
+					<svg class="burger-icon icon"><use xlink:href="#burger-icon"></use></svg>
+					<svg class="close-icon icon"><use xlink:href="#arrow-icon"></use></svg>
+				</a>
+			</div>

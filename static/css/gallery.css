@@ -1,0 +1,82 @@
+@import 'sidebar.css';
+
+.controls-block{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	mix-blend-mode: hard-light;
+}
+
+svg.arrow-icon{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 3.5em;
+	stroke-width: 10;
+	padding: 0.4em;
+	color: #fff;
+	background-color: rgba(0,0,0, 0.3);
+	transition: all 150ms ease;
+	fill: #ccc;
+	stroke: #ccc;
+}
+svg.arrow-icon:hover{
+	stroke-width: 30;
+	fill: #fff;
+	stroke: #fff;
+}
+
+#arrow-left{
+    float: left;
+    transform: rotate(180deg);
+}
+#arrow-right{
+    float: right;
+}
+
+.gallery .container{
+	padding: 0 2em;
+}
+.gallery-container{
+	width: 100%;
+	position: relative;
+
+}
+.project-description, .projects-footer{
+	margin: 2em 0;
+	text-align: center;
+}
+.stripe{
+	width: 100%;
+	height: 40px;
+	background-color: #000;
+}
+.stripe span{
+	padding: 0 0.5em;
+	text-align: center;
+	font-size: 2em;
+	text-transform: uppercase;
+	background-color: #fff;
+}
+.links{
+	margin: 2em auto;
+}
+.links a{
+	display: flex;
+	align-items: center;
+	margin: 1em;
+}
+.links a span{
+	margin-left: 8px;
+}
+
+
+/* Media styles */
+@media (min-width: 992px) {
+
+	.gallery .container{
+		padding: 0 3%;
+	}
+
+}

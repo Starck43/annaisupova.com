@@ -1,0 +1,80 @@
+@import 'sidebar.css';
+
+.container {
+	margin: 0 2em;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+.page-title{
+	flex: 100%;
+}
+.links{
+	margin: 2em auto;
+}
+.links a{
+	display: flex;
+	align-items: center;
+	margin: 1em;
+}
+.links a span{
+	margin-left: 8px;
+}
+li{
+	text-align: left;
+}
+.contacts-container{
+	margin: 0 auto;
+	flex: 1 0 100%;
+}
+.yandex-map{
+	width: 100%;
+	max-width: 1000px;
+	height: 45vh;
+	max-height: 600px;
+	margin: auto;
+	mix-blend-mode: luminosity;
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+	.container{
+		flex-wrap: wrap;
+		flex-direction: unset;
+	}
+	.yandex-map{
+		flex-basis: 50%;
+		max-width: 50%;
+		height: 66vh;
+	}
+	.contacts-container{
+		display: table;
+		flex: auto;
+		margin: auto;
+		max-width: 50%;
+	}
+	.address{
+		flex: 1 0 100%;
+		margin-top: 2em;
+		margin-bottom: 0;
+	}
+	.links{
+		margin: 0;
+	}
+}
+
+@media (min-width: 992px) {
+	.container {
+		margin: 0 3%;
+	}
+	.page-title{
+		margin: 3%;
+		padding-bottom: 1em;
+	}
+	.contacts-container{
+		margin-top: 3%;
+		margin: 3% auto;
+	}
+	.address{
+		margin-top: 0%;
+	}
+}

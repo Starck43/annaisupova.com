@@ -1,0 +1,50 @@
+@import 'sidebar.css';
+
+.portfolio .container{
+	padding: 2em;
+}
+.projects-container{
+	grid-gap: 2em;
+}
+
+@supports (display:grid) {
+	.projects-container{
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	@media (min-width: 768px) {
+		.projects-container{
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+@supports not (display:grid) {
+	.projects-container{
+		display: flex;
+		flex-wrap: wrap;
+		grid-gap: 2em;
+	}
+}
+@supports (display:grid) {
+	.projects-container .project-item{
+	}
+}
+@supports not (display:grid) {
+	.projects-container .project-item{
+		flex: 1 1 50%;
+		max-width: calc( 50% - 1em )
+	}
+}
+
+/* Media styles */
+@media (min-width: 992px) {
+
+	.portfolio .container{
+		padding: 3%;
+	}
+	.projects-container{
+		grid-gap: 3%;
+	}
+
+}

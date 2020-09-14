@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block styles %}
+<link href="{% static 'css/portfolio.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block header %}<h1>{{ category.name }}</h1>{% endblock%}
+
+{% block content %}
+
+	{% if projects %}
+	<div class="projects-container">
+		{% for project in projects %}
+		<a class="project-item" href="{{ project.get_absolute_url }}" title="{{project.title}}">
+			{% thumbnail project.cover "320" as xs %}
+			{% thumbnail project.cover "576" as sm %}
+			{% thumbnail project.cover "768" as md %}
+			{% thumbnail project.cover "992" as lg %}
+			{% thumbnail project.cover "1200" as xl %}
+<!-- 			<picture>
+				<source srcset="{{ xs.url }}" media="(max-width:{{ xs.x }}px)">
+				<source srcset="{{ sm.url }}" media="(min-width:{{ xs.x|add:1 }}px)">
+				<source srcset="{{ md.url }}" media="(min-width:{{ sm.x|add:1 }}px)">
+				<img srcset="{{ md.url }}" alt="{{project.title}}">
+ 			</picture>
+ -->
+			<img class="project-img"
+				src="{{ xs.url }}"
+				srcset="{{ xs.url }} {{ xs.x }}w, {{ sm.url }} {{ sm.x }}w, {{ md.url }} {{ md.x }}w {{ lg.x }}w {{ xl.x }}w"
+				style="max-width: {{xl.x}}px">
+
+			{% empty %}
+			<img src="/media/no-image.png">
+			{% endthumbnail %}
+			{% endthumbnail %}
+			{% endthumbnail %}
+			{% endthumbnail %}
+			{% endthumbnail %}
+			<h2>{{ project.title}}</h2>
+			<div class="description">
+				<p>{{ project.excerpt}}</p>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block styles %}
+<link href="{% static 'css/gallery.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{% static 'css/vendors/peppermint.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/lazyload.min.js' %}"></script>
+<script src="{% static 'js/sliders/peppermint.min.js' %}"></script>
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock %}
+
+{% block header %}{% endblock%}
+
+{% block content %}
+
+	{% if gallery %}
+	<div class="gallery-container">
+		<div id="slider" class="slider-block peppermint">
+			{% for gallery_image in gallery %}
+			<figure class="slide-wrapper">
+				{% thumbnail gallery_image.file "320" as xs %}
+				{% thumbnail gallery_image.file "576" as sm %}
+				{% thumbnail gallery_image.file "768" as md %}
+				{% thumbnail gallery_image.file "992" as lg %}
+				{% thumbnail gallery_image.file "1200" as xl %}
+				<img class="slide-img lazyload"
+					src="{{ xs.url }}"
+					srcset="{{ xs.url }} {{ xs.x }}w, {{ sm.url }} {{ sm.x }}w, {{ md.url }} {{ md.x }}w {{ lg.x }}w {{ xl.x }}w"
+					style="max-width: {{xl.x}}px">
+				{% empty %}
+				<img src="/media/no-image.png">
+				{% endthumbnail %}
+				{% endthumbnail %}
+				{% endthumbnail %}
+				{% endthumbnail %}
+				{% endthumbnail %}
+
+				{% if gallery_image.title or gallery_image.description %}
+				<figcaption>
+					{% if gallery_image.title %}
+					<h2 class="slide-title">{{ gallery_image.title}}</h2>
+					{% endif %}
+					{% if gallery_image.description %}
+					<div class="slide-description">{{ gallery_image.description}}</div>
+					{% endif %}
+				</figcaption>
+				{% endif %}
+
+			</figure>
+			{% endfor %}
+		</div>
+		<div class="controls-block">
+			<svg id="arrow-left" class="arrow-icon icon"><use xlink:href="#arrow-icon"></use></svg>
+			<svg id="arrow-right" class="arrow-icon icon"><use xlink:href="#arrow-icon"></use></svg>
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="project-description">
+		<h1>{{ project.title }}</h1>
+		<p>{{ project.excerpt }}</p>
+	</div>
+
+	<div class="projects-footer">
+		<div class="stripe"><span>Исупова Анна, дизайнер</span></div>
+
+		{% include 'contacts-block.html' %}
+	</div>
+{% endblock %}

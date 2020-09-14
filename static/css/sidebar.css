@@ -1,0 +1,85 @@
+
+/* Navigation block */
+
+#navbar{
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-block{
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	padding: 1em;
+	width: 200px;
+	background-color: #fff;
+	border-left: 2px solid;
+	transform: translateX(100%);
+	transition: 300ms all ease-in-out;
+	box-sizing: border-box;
+	z-index: 1;
+	cursor: default;
+}
+
+#burger-menu .icon{
+	position: absolute;
+	stroke: #000;
+}
+.nav-block.active #burger-menu .icon:first-child{
+	opacity: 0;
+}
+.nav-block.active #burger-menu .icon:last-child{
+	opacity: 1;
+}
+.nav-block .close-icon{
+	opacity: 0;
+}
+#nav-menu{
+	position: relative;
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+}
+#nav-menu li{
+	padding: 10px 0;
+}
+#burger-menu{
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 2px;
+	transform: translateX(-100%);
+	transition: all 300ms ease;
+}
+.nav-block #burger-menu{
+	background-color: rgba(255,255,255,0.0);
+}
+#burger-menu svg{
+	stroke-linecap: round;
+}
+#burger-menu,
+.search-link,
+.login-link{
+	height: 30px;
+	width: 30px;
+}
+
+.is-nav .nav-block.active{
+	transform: translateX(0%);
+}
+.design__selected .second-container{
+}
+
+
+@media (min-width: 992px) {
+
+	.nav-block #burger-menu{
+		display: none;
+	}
+
+}

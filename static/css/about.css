@@ -1,0 +1,43 @@
+@import 'sidebar.css';
+
+.about-container{
+	width: auto;
+	max-width: 1000px;
+	margin: auto;
+	padding: 2em;
+}
+
+.quote-block{
+	padding: 2em;
+	background-color: #eee;
+	font-size: 1.4em;
+}
+.quote-block p{
+	display: flex;
+}
+.quote-block p::before{
+	content: '\201c';
+	position: relative;
+	height: 1em;
+	top: -0.3em;
+	font-size: 5em;
+}
+.event-year-title{
+	margin: 2em;
+	cursor: pointer;
+}
+.event-year-title >:last-child {
+	height: 0;
+	margin: 0;
+	overflow: hidden;
+	transition: 300ms all ease-in-out
+}
+.event-year-title.collapsed >*{
+}
+@media (max-width: 768px) and (orientation: landscape) {
+
+}
+
+@media (min-width: 992px) {
+
+}

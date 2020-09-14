@@ -1,0 +1,150 @@
+/* Base styles for all pages */
+::-moz-focus-inner{
+	border: 0;
+	padding: 0;
+}
+
+input:not([type=checkbox]):not([type=radio]),
+textarea,
+select{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+::-webkit-input-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+:-ms-input-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+:-moz-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+::-moz-placeholder {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 0.8em;
+}
+
+title{
+	visibility: hidden;
+}
+html{
+	min-height: 100vh;
+}
+body {
+	font-family: "CenturyGothic", sans-serif;
+	font-size: 16px!important;
+	line-height: 1.25!important;
+	margin: 0;
+	background-color: #fff;
+	min-height: -webkit-fill-available;
+}
+
+h1{font-weight: bold;}
+
+a{
+	display: block;
+	color: #000;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}
+
+input,textarea {
+	box-sizing: border-box;
+	border: 1px solid grey;
+	padding: 3px;
+}
+textarea{
+	resize: none;
+}
+p{
+	line-height: 1.5;
+}
+ul{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style-type: none;
+}
+button{
+	height: 40px;
+	border-radius: 0.4em
+}
+figure{
+	margin: 0;
+}
+img{
+	width: 100%;
+	height: auto;
+}
+.img-responsive{width: auto;  height: 100%;}
+svg.icon{
+	width: 30px;
+	height: 30px;
+	fill: grey;
+	stroke: grey;
+	fill-rule:evenodd;
+	clip-rule:evenodd;
+	transition: all 150ms ease;
+}
+svg.icon:hover{
+	stroke-width: 2;
+}
+.fill-none{
+	fill: none;
+	stroke-width: 20px;
+}
+svg.instagram-icon{
+	border: 1px solid grey;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+svg.login-icon{
+	stroke-width: 0.4;
+}
+svg.login-icon:hover{
+	stroke-width: 0.8;
+}
+.container{
+	margin: 2em;
+}
+.page-title{
+	text-align: center;
+}
+.first-container a.contacts-link{
+	position: absolute;
+	height: auto;
+	left: 0;
+	bottom: 0;
+	margin: 2em;
+	padding: 2em;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+
+	.is-nav .container{
+		margin-left: 0;
+		margin-right: 200px;
+	}
+
+}
+
+@media (min-width: 992px) {
+
+	.container{
+		margin: 3%;
+	}
+	.first-container a.contacts-link{
+		margin: 0;
+	}
+
+}
