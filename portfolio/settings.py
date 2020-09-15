@@ -23,7 +23,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm'
+# SECRET_KEY = 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm')
+print(SECRET_KEY)
 # only for production
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm')
 # SECRET_KEY = '#7rmni#sjhr^t$u56*x4=wfr+nutf1($1xjv($2w=m#68%e$4w' # <--- annaisupova.com production key
@@ -31,7 +33,8 @@ SECRET_KEY = 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # Alternative method to switch debug off for production
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = bool( os.environ.get('DEBUG', True) )
+print(DEBUG)
 
 ALLOWED_HOSTS = []
 
@@ -183,7 +186,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+# for production
+# STATIC_ROOT = os.path.join(BASE_DIR, 'public_html/static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
@@ -192,4 +196,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 # Path where media is stored
+# for production
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'public_html/media')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
