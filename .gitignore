@@ -17,5 +17,6 @@ __pycache__/
 sftp-config.json
 
 src/
+.env
 .venv
 venv/
