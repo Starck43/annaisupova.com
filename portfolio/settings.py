@@ -12,9 +12,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os, sys
+# django-environ
+# https://django-environ.readthedocs.io/en/latest/
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load and read .env file
+# OS environment variables take precedence over variables from .env
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Добавим общую папку для хранения приложений
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
@@ -23,20 +31,15 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm')
-print(SECRET_KEY)
-# only for production
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'z$m#y!+kchxv)ho1y2&lvlgf-hyp$t9fii336kv5a04o5r=spm')
-# SECRET_KEY = '#7rmni#sjhr^t$u56*x4=wfr+nutf1($1xjv($2w=m#68%e$4w' # <--- annaisupova.com production key
+
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # Alternative method to switch debug off for production
-DEBUG = bool( os.environ.get('DEBUG', True) )
-print(DEBUG)
+DEBUG = env.bool('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', list, [])
 
 
 # Application definition
@@ -49,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sorl.thumbnail',
-    #'crispy_forms',
+    'multiupload',
+    'crispy_forms',
     'design',
 ]
 
@@ -94,14 +98,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-    # Production
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'a0467449_a-studia',
-    #     'USER': 'a0467449_a-studia',
-    #     'PASSWORD': 'AnyaIsupova',
-    #     'HOST': 'localhost',
-    # }
+    'extra': {
+
+    }
 }
 
 
@@ -137,11 +136,7 @@ FILE_UPLOAD_HANDLERS = [
  ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.yandex.ru'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = "artservice08@yandex.ru"
-# EMAIL_HOST_PASSWORD = "xdbhoybbgqugmbwk"
-# EMAIL_USE_TLS = True
+
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "annaisupova@list.ru"
