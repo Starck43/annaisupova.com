@@ -269,10 +269,28 @@ header span{
 		flex-direction: column;
 		justify-content: space-between;
 	}
-
+	.second-container .slide-block{
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		width: 0;
+		background: #fff;
+		transition: all 1s ease-out;
+		z-index: 0;
+	}
 	.design__selected .first-container{
 		flex-basis: calc(100% - 200px);
 		flex-shrink: 0;
+	}
+	.design__selected .second-container .slide-block{
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		width: 100%;
+		background: white;
+		z-index: 3;
 	}
 }
 

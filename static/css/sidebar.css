@@ -21,7 +21,7 @@
 	transform: translateX(100%);
 	transition: 300ms all ease-in-out;
 	box-sizing: border-box;
-	z-index: 1;
+	z-index: 4;
 	cursor: default;
 }
 
@@ -69,7 +69,14 @@
 	width: 30px;
 }
 
+.design__selected .nav-block,
+.styling__selected .nav-block{
+	transition: 1s 300ms all ease-out;
+}
+.design__selected .nav-block,
+.styling__selected .nav-block,
 .is-nav .nav-block.active{
+
 	transform: translateX(0%);
 }
 .design__selected .second-container{

@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 	const sidebar = document.querySelector('.nav-block');
 	const searchForm = document.querySelector('.search-form');
+	const homePage = document.querySelector('.home');
 
-	if ( window.innerWidth >= 992 ) {
+	if ( ! homePage && window.innerWidth >= 992 ) {
 		sidebar.classList.add('active');
 	}
 
