@@ -37,7 +37,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # Alternative method to switch debug off for production
-DEBUG = env.bool('DEBUG', True)
+DEBUG = env.bool('DEBUG', False)
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', list, [])
 
@@ -94,15 +94,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-    'extra': {
-
-    }
+    'default': env.db()
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -124,28 +121,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
+    'default': env.cache(),
 }
+
 
 FILE_UPLOAD_HANDLERS = [
     "django.core.files.uploadhandler.MemoryFileUploadHandler",
     "django.core.files.uploadhandler.TemporaryFileUploadHandler"
  ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "annaisupova@list.ru"
-EMAIL_HOST_PASSWORD = "A-studia_support"
-EMAIL_USE_SSL = True
-
-EMAIL_RICIPIENTS = ['saloon.as@gmail.com']
-SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_CONFIG = env.email_url('EMAIL_URL')
+EMAIL_RICIPIENTS = env('EMAIL_RICIPIENTS', list, [])
+SERVER_EMAIL = EMAIL_CONFIG['EMAIL_HOST_USER']
+DEFAULT_FROM_EMAIL = EMAIL_CONFIG['EMAIL_HOST_USER']
+vars().update(EMAIL_CONFIG)
 
 # sorl-thumbnail settings
 THUMBNAIL_ALIASES = {
@@ -179,18 +168,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+PUBLIC_ROOT = env('PUBLIC_ROOT', default='')
 
 STATIC_URL = '/static/'
-# for production
-# STATIC_ROOT = os.path.join(BASE_DIR, 'public_html/static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, PUBLIC_ROOT + 'static')
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, PUBLIC_ROOT + 'static'),
+    ]
 
 # Base url to serve media files
 MEDIA_URL = '/media/'
 
-# Path where media is stored
-# for production
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'public_html/media')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, PUBLIC_ROOT + 'media')
