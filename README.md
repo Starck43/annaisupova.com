@@ -1,2 +1,5 @@
 # annaisupova.com
-Portfolio site
+Portfolio site for Design studio
+under construction ...
+
+site: https://annaisupova.com
