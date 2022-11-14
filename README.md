@@ -1,5 +1,8 @@
 # annaisupova.com
 Portfolio site for Design studio
-under construction ...
+
+<i>under construction ...</i>
+
+![](screenshot.jpg)
 
 site: https://annaisupova.com
