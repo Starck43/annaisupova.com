@@ -27,12 +27,13 @@
 	cursor: pointer;
 }
 .event-year-title >:last-child {
-	height: 0;
+	max-height: 100vh;
 	margin: 0;
 	overflow: hidden;
 	transition: 300ms all ease-in-out
 }
 .event-year-title.collapsed >*{
+	max-height: 0
 }
 @media (max-width: 768px) and (orientation: landscape) {
 

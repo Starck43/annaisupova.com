@@ -1,12 +1,54 @@
-*.bak
-.DS_Store
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Django #
-media/
-__pycache__/
-*.log
-*.pot
-*.pyc
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# static
+resources/
+src/
+static/
+**/media/*
+!**/media/no-image.jpg
+!**/media/no-image.png
+!**/media/no-person.png
+CACHE/
+
+# misc
+**/.DS_Store
+*.pem
+package-lock.json
+yarn.lock
+datadamp.json
+.zshrc
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# Environment
+.env*
+.env
+prod.env
+.venv
+venv/
+
+# vercel
+.vercel
+.idea
 
 # Database #
 *.sqlite3
@@ -16,7 +58,13 @@ __pycache__/
 *.sublime-project
 sftp-config.json
 
-src/
-.env
-.venv
-venv/
+
+# Django #
+__pycache__/
+*.log
+*.pot
+*.pyc
+migrations/
+__init__.py
+wsgi.py
+asgi.py
